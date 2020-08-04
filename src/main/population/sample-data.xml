@@ -297,4 +297,73 @@
 
 
 
+	<!-- Patron -->
+
+	<bean name="patron1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="patron1" />
+		<property name="password" value="patron1" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Patron 1" />
+				<property name="surname" value="One" />
+				<property name="email" value="patron1@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="patron1Patron" />
+				<ref bean="patron1Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="patron1Patron" class="acme.entities.roles.Patron">
+		<property name="organisation" value="Organisation 1" />
+		<property name="number" value="4532967236138706" />
+		<property name="monthExpiration" value="07" />
+		<property name="yearExpiration" value="2022" />
+		<property name="cvv" value="0325" />
+		<property name="userAccount" ref="patron1UserAccount" />
+	</bean>
+
+	<bean name="patron1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="patron1UserAccount" />
+	</bean>
+	
+	
+	
+		<bean name="patron2UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="patron2" />
+		<property name="password" value="patron2" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Patron 2" />
+				<property name="surname" value="Two" />
+				<property name="email" value="patron2@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="patron2Patron" />
+				<ref bean="patron2Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="patron2Patron" class="acme.entities.roles.Patron">
+		<property name="organisation" value="Organisation 2" />
+		<property name="number" value="4508471412089379" />
+		<property name="monthExpiration" value="12" />
+		<property name="yearExpiration" value="2023" />
+		<property name="cvv" value="639" />
+		<property name="userAccount" ref="patron2UserAccount" />
+	</bean>
+
+	<bean name="patron2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="patron2UserAccount" />
+	</bean>
+
+
 </beans>

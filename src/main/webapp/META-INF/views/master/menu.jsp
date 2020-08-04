@@ -89,6 +89,12 @@
 		</acme:menu-option>
 
 
+		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
+			<acme:menu-suboption code="master.menu.patron.create-banner" action="/patron/banner/create"/>
+			<acme:menu-suboption code="master.menu.patron.list-banner" action="/patron/banner/list"/>
+		</acme:menu-option>
+
+
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator />
@@ -127,7 +133,6 @@
       <acme:menu-separator />
       
       		<acme:menu-suboption code="master.menu.administrator.list-banner" action="/administrator/banner/list"/>
-			<acme:menu-suboption code="master.menu.administrator.create-banner" action="/administrator/banner/create"/>
 			
       <acme:menu-separator />
       
