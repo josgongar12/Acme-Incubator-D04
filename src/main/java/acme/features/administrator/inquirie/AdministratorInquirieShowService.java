@@ -8,7 +8,6 @@ import acme.entities.inquiries.Inquirie;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
-import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractShowService;
 
 @Service
