@@ -28,16 +28,9 @@
 	<acme:form-textbox code="patron.banner.form.label.cvv" path="cvv" placeholder="123"/>
 	
 	
-	<acme:form-submit test="${command == 'show' }" code="patron.banner.form.button.update"
-		action="/patron/banner/update" />
-	<acme:form-submit test="${command == 'show' }" code="patron.banner.form.button.delete"
-		action="/patron/banner/delete" />
-	<acme:form-submit test="${command == 'create' }"code="patron.challenge.form.button.create"
-		action="/patron/challenge/create"/>
-	<acme:form-submit test="${command == 'update' }" code="patron.banner.form.button.update"
-		action="/patron/banner/update" />
-	<acme:form-submit test="${command == 'delete' }" code="patron.banner.form.button.delete"
-		action="/patron/banner/delete" />
+	<acme:form-submit test="${command == 'create'}" code="patron.banner.form.button.create" action="create" />
+	<acme:form-submit test="${command != 'create'}" code="patron.banner.form.button.update" action="update" />
+	<acme:form-submit test="${command != 'create'}" code="patron.banner.form.button.delete" action="delete" />
 	
 	
 	<acme:form-return code="patron.banner.form.button.return" />

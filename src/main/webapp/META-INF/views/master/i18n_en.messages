@@ -131,7 +131,7 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.patron = Patron
 master.menu.patron.create-banner = Create banner
-master.menu.patron.list-banner = List my banners
+master.menu.patron.list-mine-banner = List my banners
 
 # master.menu.user-account ####################################################
 
