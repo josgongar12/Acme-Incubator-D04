@@ -32,8 +32,6 @@
 		action="/administrator/banner/update" />
 	<acme:form-submit test="${command == 'show' }" code="administrator.banner.form.button.delete"
 		action="/administrator/banner/delete" />
-	<acme:form-submit test="${command == 'create' }" code="administrator.banner.form.button.create"
-		action="/administrator/banner/create" />
 	<acme:form-submit test="${command == 'update' }" code="administrator.banner.form.button.update"
 		action="/administrator/banner/update" />
 	<acme:form-submit test="${command == 'delete' }" code="administrator.banner.form.button.delete"
