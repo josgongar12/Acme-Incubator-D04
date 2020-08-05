@@ -598,5 +598,25 @@
   		<property name="investor" ref="investor2Investor" />
   		<property name="investmentRound" ref="investmentRound3" />
   	</bean>
+  	
+	<bean name="bookkeeper1" class="acme.entities.roles.Bookkeeper">
+	<property name="firmName" value="Bookkeeper1"/>
+	<property name="responsibilityStatement" value="responsibilityStatement1"/>
+	</bean>
 	
+	<bean name="accountingRecord1" class="acme.entities.accountingRecords.AccountingRecord">
+	<property name="title" value="Accounting Record 1"/>
+	<property name="status" value="draft"/>
+	<property name="creationMoment" value="2020/04/15 12:15"/>
+	<property name="body" value="Draft"/>
+	<property name="investmentRound" ref="investmentRound3" />
+	</bean>
+	
+	<bean name="accountingRecord2" class="acme.entities.accountingRecords.AccountingRecord">
+	<property name="title" value="Accounting Record 2"/>
+	<property name="status" value="published"/>
+	<property name="creationMoment" value="2020/02/11 23:59"/>
+	<property name="body" value="Published"/>
+	<property name="investmentRound" ref="investmentRound2" />
+	</bean>
 </beans>
