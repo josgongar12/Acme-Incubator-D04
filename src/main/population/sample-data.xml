@@ -600,6 +600,8 @@
   	</bean>
   	
 	
+	<!-- Bookkeepers -->
+		
 	<bean name="bookkeeper1UserAccount" class="acme.framework.entities.UserAccount">
 		<property name="username" value="bookkeeper1" />
 		<property name="password" value="bookkeeper1" />
@@ -632,12 +634,47 @@
 	</bean>
 	
 	
+	<bean name="bookkeeper2UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="bookkeeper2" />
+		<property name="password" value="bookkeeper2" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Bookkeeper 2" />
+				<property name="surname" value="Two" />
+				<property name="email" value="bookkeeper2@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="bookkeeper2Bookkeeper" />
+				<ref bean="bookkeeper2Authenticated" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="bookkeeper2Bookkeeper" class="acme.entities.roles.Bookkeeper">
+		
+		<property name="firmName" value="Bookkeeper2"/>
+		<property name="responsibilityStatement" value="responsibilityStatement2"/>
+	
+		<property name="userAccount" ref="bookkeeper2UserAccount" />
+	</bean>
+	
+	<bean name="bookkeeper2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="bookkeeper2UserAccount" />
+	</bean>
+	
+	
+	<!-- Accounting Records -->
+	
 	<bean name="accountingRecord1" class="acme.entities.accountingRecords.AccountingRecord">
 	<property name="title" value="Accounting Record 1"/>
 	<property name="status" value="draft"/>
 	<property name="creationMoment" value="2020/04/15 12:15"/>
 	<property name="body" value="Draft"/>
 	<property name="investmentRound" ref="investmentRound3" />
+	<property name="bookkeeper" ref="bookkeeper1Bookkeeper" />
 	</bean>
 	
 	<bean name="accountingRecord2" class="acme.entities.accountingRecords.AccountingRecord">
@@ -646,5 +683,6 @@
 	<property name="creationMoment" value="2020/02/11 23:59"/>
 	<property name="body" value="Published"/>
 	<property name="investmentRound" ref="investmentRound2" />
+	<property name="bookkeeper" ref="bookkeeper2Bookkeeper" />
 	</bean>
 </beans>
