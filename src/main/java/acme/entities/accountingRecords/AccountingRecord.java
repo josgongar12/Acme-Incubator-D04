@@ -13,11 +13,14 @@
 package acme.entities.accountingRecords;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import acme.entities.investmentRounds.InvestmentRound;
 import acme.framework.entities.DomainEntity;
 
 import javax.persistence.Temporal;
@@ -56,8 +59,8 @@ public class AccountingRecord extends DomainEntity{
 
 	// Relationships ----------------------------------------------------------
 
-	//	@NotNull
-	//@Valid
-	//@ManyToOne(optional = false)
-	//private InvestmentRounds					invRound;
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private InvestmentRound					invRound;
 }
