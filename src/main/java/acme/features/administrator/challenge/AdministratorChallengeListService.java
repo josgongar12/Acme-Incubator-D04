@@ -10,8 +10,6 @@ import acme.entities.challenges.Challenge;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Administrator;
-
-import acme.framework.entities.Principal;
 import acme.framework.services.AbstractListService;
 
 @Service
@@ -26,7 +24,7 @@ public class AdministratorChallengeListService implements AbstractListService<Ad
 	@Override
 	public boolean authorise(final Request<Challenge> request) {
 		assert request != null;
-		
+
 		return true;
 	}
 

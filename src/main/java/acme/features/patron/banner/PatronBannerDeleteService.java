@@ -1,22 +1,21 @@
 
-package acme.features.administrator.banner;
+package acme.features.patron.banner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.banners.Banner;
+import acme.entities.roles.Patron;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Administrator;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.services.AbstractDeleteService;
 
 @Service
-
-public class AdministratorBannerCreateService implements AbstractCreateService<Administrator, Banner> {
+public class PatronBannerDeleteService implements AbstractDeleteService<Patron, Banner> {
 
 	@Autowired
-	AdministratorBannerRepository repository;
+	PatronBannerRepository repository;
 
 
 	@Override
@@ -41,14 +40,18 @@ public class AdministratorBannerCreateService implements AbstractCreateService<A
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		request.unbind(entity, model, "picture", "slogan", "url", "holderName", "number", "brand", "monthExpiration", "yearExpiration", "cvv");
+		request.unbind(entity, model, "title", "sector", "inventor", "description", "web", "email", "indication", "stars");
 	}
 
 	@Override
-	public Banner instantiate(final Request<Banner> request) {
+	public Banner findOne(final Request<Banner> request) {
 
 		Banner result;
-		result = new Banner();
+		int id;
+
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneById(id);
+
 		return result;
 	}
 
@@ -61,9 +64,12 @@ public class AdministratorBannerCreateService implements AbstractCreateService<A
 	}
 
 	@Override
-	public void create(final Request<Banner> request, final Banner entity) {
+	public void delete(final Request<Banner> request, final Banner entity) {
 
-		this.repository.save(entity);
+		assert request != null;
+		assert entity != null;
+
+		this.repository.delete(entity);
 	}
 
 }
