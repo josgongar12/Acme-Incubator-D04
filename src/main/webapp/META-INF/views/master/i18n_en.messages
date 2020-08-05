@@ -133,6 +133,11 @@ master.menu.patron = Patron
 master.menu.patron.create-banner = Create banner
 master.menu.patron.list-mine-banner = List my banners
 
+master.menu.entrepreneur ####################################
+
+master.menu.entrepreneur = Entrepreneur
+master.menu.entrepreneur.list-mine-application = List my applications
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

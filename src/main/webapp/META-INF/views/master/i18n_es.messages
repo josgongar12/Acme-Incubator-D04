@@ -135,6 +135,10 @@ master.menu.patron = Cliente
 master.menu.patron.create-banner = Crear banner
 master.menu.patron.list-mine-banner = Lista de mis banners
 
+#master.menu.entrepreneur ####################################
+master.menu.entrepreneur = Emprendedor
+master.menu.entrepreneur.list-mine-application = Lista aplicaciones
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
