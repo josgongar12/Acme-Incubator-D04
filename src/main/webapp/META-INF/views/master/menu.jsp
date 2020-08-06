@@ -143,7 +143,7 @@
       		<acme:menu-suboption code="master.menu.administrator.list-banner" action="/administrator/banner/list"/>
 			
       <acme:menu-separator />
-      
+      <acme:menu-suboption code="master.menu.administrator.chart" action="/administrator/chart/show"/>
       <acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/dashboard/show"/>
 			<acme:menu-suboption code="master.menu.administrator.chart" action="/administrator/chart/show"/>
       

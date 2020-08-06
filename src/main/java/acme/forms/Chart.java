@@ -21,6 +21,11 @@ public class Chart implements Serializable{
 	Object[]					numberOfToolsGroupedBySector;
 	Object[]					ratioOfTechnologiesGroupedByStatus;
 	Object[]					ratioOfToolsGroupedByStatus;
+	Object[] 					ratioOfInvestmentRoundGroupedByKindRound;	
+	Object[] 					ratioOfApplicationsGroupedByStatement;
+	
+		
+	
 					
 
 }
