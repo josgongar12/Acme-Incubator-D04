@@ -85,7 +85,8 @@ master.menu.authenticated.list-technology = List of Technology Records
 master.menu.authenticated.tool-record = Tool Records
 master.menu.authenticated.list-tool-record = List of Tool Records
 
-
+master.menu.authenticated.forum = Forums
+master.menu.authenticated.list-mine.forum = My forums
 
 # master.menu.administrator ###################################################
 

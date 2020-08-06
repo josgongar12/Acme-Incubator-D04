@@ -87,7 +87,9 @@
 		<acme:menu-option code="master.menu.authenticated.inquirie" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.list-inquirie" action="/authenticated/inquirie/list"/>
 		</acme:menu-option>
-
+		<acme:menu-option code="master.menu.authenticated.forum" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.list-mine.forum" action="/authenticated/forum/list-mine"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
 			<acme:menu-suboption code="master.menu.patron.create-banner" action="/patron/banner/create"/>

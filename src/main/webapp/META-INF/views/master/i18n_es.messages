@@ -85,7 +85,8 @@ master.menu.authenticated.list-technology = Lista de registros de tecnologia
 master.menu.authenticated.tool-record = Registro de Herramientas
 master.menu.authenticated.list-tool-record = Lista registros de herramientas
 
-
+master.menu.authenticated.forum = Foros
+master.menu.authenticated.list-mine.forum = Mis foros
 
 # master.menu.administrator ###################################################
 
