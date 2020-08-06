@@ -93,6 +93,11 @@
 			<acme:menu-suboption code="master.menu.patron.create-banner" action="/patron/banner/create"/>
 			<acme:menu-suboption code="master.menu.patron.list-mine-banner" action="/patron/banner/list-mine"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.bookkeeper" access="hasRole('Bookkeeper')">
+			<acme:menu-suboption code="master.menu.bookkeeper.list-mine-investment-round" action="/bookkeeper/investment-round/list-mine"/>
+			<acme:menu-suboption code="master.menu.bookkeeper.list-not-mine-investment-round" action="/bookkeeper/investment-round/list-not-mine"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.entrepreneur" access="hasRole('Entrepreneur')">
 			<acme:menu-suboption code="master.menu.entrepreneur.list-mine-application" action="/entrepreneur/application/list-mine"/>
