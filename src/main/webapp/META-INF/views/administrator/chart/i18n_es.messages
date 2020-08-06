@@ -1,9 +1,13 @@
 	administrator.chart.form.label.technologiesBySector = Tecnologias agrupadas por sector:
 
-	administrator.chart.form.label.toolsBySector = Herramientas grouped by sector:
+	administrator.chart.form.label.toolsBySector = Herramientas agrupadas por sector:
 
-	administrator.chart.form.label.technologiesByStatus = Tecnologias grouped by status:
+	administrator.chart.form.label.technologiesByStatus = Tecnologias agrupadas por estado:
 
-	administrator.chart.form.label.toolsByStatus = Herramientas grouped by status:
+	administrator.chart.form.label.toolsByStatus = Herramientas agrupadas por estado:
 
+
+administrator.chart.form.label.InvestmentRoundByKind = InvestmentRound agrupadas por tipo:
+
+administrator.chart.form.label.ApplicationsByStatus = Applications agrupadas por estado:
 

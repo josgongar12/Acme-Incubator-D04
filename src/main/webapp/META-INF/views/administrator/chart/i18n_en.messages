@@ -7,3 +7,6 @@
 	administrator.chart.form.label.toolsByStatus = Tools grouped by status:
 
 
+administrator.chart.form.label.InvestmentRoundByKind = InvestmentRound grouped by kind:
+
+administrator.chart.form.label.ApplicationsByStatement = Applications grouped by statement:
