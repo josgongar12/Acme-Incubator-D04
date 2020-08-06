@@ -135,11 +135,17 @@ master.menu.patron = Cliente
 master.menu.patron.create-banner = Crear banner
 master.menu.patron.list-mine-banner = Lista de mis banners
 
+
+#master.menu.entrepreneur ####################################
+master.menu.entrepreneur = Emprendedor
+master.menu.entrepreneur.list-mine-application = Lista aplicaciones
+
 # master.menu.bookkeeper ##########################################################
 
 master.menu.bookkeeper = Solicitante
 master.menu.bookkeeper.list-mine-investment-round = Lista de mis rondas de inversiones
 master.menu.bookkeeper.list-not-mine-investment-round = Lista de otras rondas de inversiones
+
 
 # master.menu.user-account ####################################################
 

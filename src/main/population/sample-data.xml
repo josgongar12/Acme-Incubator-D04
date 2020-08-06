@@ -599,9 +599,10 @@
   		<property name="investmentRound" ref="investmentRound3" />
   	</bean>
   	
-	
+
 	<!-- Bookkeepers -->
 		
+
 	<bean name="bookkeeper1UserAccount" class="acme.framework.entities.UserAccount">
 		<property name="username" value="bookkeeper1" />
 		<property name="password" value="bookkeeper1" />
@@ -632,7 +633,7 @@
 	<bean name="bookkeeper1Authenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="bookkeeper1UserAccount" />
 	</bean>
-	
+
 	
 	<bean name="bookkeeper2UserAccount" class="acme.framework.entities.UserAccount">
 		<property name="username" value="bookkeeper2" />
@@ -667,6 +668,7 @@
 	
 	
 	<!-- Accounting Records -->
+
 	
 	<bean name="accountingRecord1" class="acme.entities.accountingRecords.AccountingRecord">
 	<property name="title" value="Accounting Record 1"/>

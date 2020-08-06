@@ -62,10 +62,12 @@ public class AccountingRecord extends DomainEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private InvestmentRound		investmentRound;
+
+	private InvestmentRound					investmentRound;
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	private Bookkeeper			bookkeeper;
+
 }

@@ -99,6 +99,9 @@
 			<acme:menu-suboption code="master.menu.bookkeeper.list-not-mine-investment-round" action="/bookkeeper/investment-round/list-not-mine"/>
 		</acme:menu-option>
 
+		<acme:menu-option code="master.menu.entrepreneur" access="hasRole('Entrepreneur')">
+			<acme:menu-suboption code="master.menu.entrepreneur.list-mine-application" action="/entrepreneur/application/list-mine"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
@@ -157,6 +160,7 @@
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
+		
 	</acme:menu-left>
 
 	<acme:menu-right>
