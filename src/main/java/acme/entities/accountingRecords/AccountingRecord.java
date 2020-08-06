@@ -1,4 +1,5 @@
 /*
+ * 
  * Consumer.java
  *
  * Copyright (c) 2019 Rafael Corchuelo.
@@ -11,9 +12,13 @@
  */
 
 package acme.entities.accountingRecords;
+
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,17 +27,13 @@ import javax.validation.constraints.Pattern;
 
 import acme.entities.investmentRounds.InvestmentRound;
 import acme.framework.entities.DomainEntity;
-
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class AccountingRecord extends DomainEntity{
+public class AccountingRecord extends DomainEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -46,14 +47,13 @@ public class AccountingRecord extends DomainEntity{
 	@NotBlank
 	@Pattern(regexp = "^(draft|published)$")
 	private String				status;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private Date		creationMoment;
-	
+	private Date				creationMoment;
+
 	@NotBlank
 	private String				body;
-	
 
 	// Derived attributes -----------------------------------------------------
 
@@ -62,5 +62,5 @@ public class AccountingRecord extends DomainEntity{
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private InvestmentRound					invRound;
+	private InvestmentRound		investmentRound;
 }
