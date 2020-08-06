@@ -17,12 +17,17 @@
 
 <acme:form>
 
-	<acme:form-textbox code="entrepreneur.application.form.label.ticker" path="ticker"/>
-	<acme:form-moment code="entrepreneur.application.form.label.moment" path="moment"/>
-	<acme:form-textbox code="entrepreneur.application.form.label.statement" path="statement"/>
+	<acme:form-textbox code="entrepreneur.application.form.label.ticker" path="ticker" readonly="true"/>
+	<acme:menu-separator />
+	<acme:form-textbox code="entrepreneur.application.form.label.referenceInvestmentRound" path="referenceInvestmentRound" readonly="true"/>
+	<acme:form-textbox code="entrepreneur.application.form.label.InvestmentRoundEntrepreneur" path="InvestmentRoundEntrepreneur" readonly="true"/>
+	<acme:menu-separator />
+	<acme:form-moment code="entrepreneur.application.form.label.moment" path="moment" readonly="true"/>
+	<acme:form-textbox code="entrepreneur.application.form.label.statement" path="statement" readonly="true"/>
 	<acme:form-money code="entrepreneur.application.form.label.moneyOffer" path="moneyOffer"/>
+	
 
 	
-	<acme:form-return code="entrepreneur.application.form.button.return" />
-	
+	<acme:form-return code="entrepreneur.investmentRound.form.button.return" />
+		
 </acme:form>

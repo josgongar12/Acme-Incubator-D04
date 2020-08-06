@@ -51,11 +51,12 @@ public class Application extends DomainEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private Entrepreneur		entrepreneur;
+	private Investor			investor;
+
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private Investor			investor;
+	private Entrepreneur			entrepreneur;
 
 }

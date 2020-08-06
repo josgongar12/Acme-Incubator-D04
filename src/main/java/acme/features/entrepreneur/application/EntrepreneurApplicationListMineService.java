@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.applications.Application;
-import acme.entities.challenges.Challenge;
+
 import acme.entities.roles.Entrepreneur;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -35,13 +35,11 @@ public class EntrepreneurApplicationListMineService implements AbstractListServi
 		assert request != null;
 		Collection<Application> result ;
 		
-		//int investmentRoundId;
+		
 
-		//investmentRoundId = request.getModel().getInteger("id");
+		result = this.repository.findManyByEntrepreneurId(request.getPrincipal().getActiveRoleId());
 
-		result = this.repository.findManyByEntrepreneurIdAndInvestmentRoundId(request.getPrincipal().getActiveRoleId());
-
-		//result = this.repository.findManyApplication();
+		
 
 		return result;
 	}
