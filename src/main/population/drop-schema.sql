@@ -1,6 +1,10 @@
 
     alter table `accounting_record` 
        drop 
+       foreign key `FK41jm4vk7runvmg5tderffrele`;
+
+    alter table `accounting_record` 
+       drop 
        foreign key `FKk1pmfnppwk0kav7xloy8u71uq`;
 
     alter table `administrator` 
@@ -43,6 +47,10 @@
        drop 
        foreign key FK_r6tqltqvrlh1cyy8rsj5pev1q;
 
+    alter table `forum` 
+       drop 
+       foreign key `FKq8ggcjgl5by5gf6l5bji632hu`;
+
     alter table `investment_round` 
        drop 
        foreign key `FKkj1l8c2ftn9c65y061me6t37j`;
@@ -50,6 +58,14 @@
     alter table `investor` 
        drop 
        foreign key FK_dcek5rr514s3rww0yy57vvnpq;
+
+    alter table `message` 
+       drop 
+       foreign key `FKfwwpivgx5j4vw4594dgrw884q`;
+
+    alter table `message` 
+       drop 
+       foreign key `FKik4epe9dp5q6uenarfyia7xin`;
 
     alter table `patron` 
        drop 
@@ -89,6 +105,8 @@
 
     drop table if exists `fernandez_bulletin`;
 
+    drop table if exists `forum`;
+
     drop table if exists `gonzalez_bulletin`;
 
     drop table if exists `inquirie`;
@@ -100,6 +118,8 @@
     drop table if exists `jimenez_bulletin`;
 
     drop table if exists `marin_bulletin`;
+
+    drop table if exists `message`;
 
     drop table if exists `notice`;
 
