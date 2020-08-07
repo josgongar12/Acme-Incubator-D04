@@ -12,4 +12,8 @@ administrator.dashboard.form.label.maxMoneyActiveOvertures = Máximo Dinero de P
 administrator.dashboard.form.label.averageMoneyActiveOvertures = Media de Dinero de Propuestas Activas:
 administrator.dashboard.form.label.stddevMoneyActiveOvertures = Desviación Típica de Propuestas Activas:
 
+administrator.dashboard.form.label.averageInvestmentRoundsPerEntrepreneur = Media de Rondas de Inversión por Emprendedor:
+administrator.dashboard.form.label.averageApplicationsPerEntrepreneur = Media de Solicitudes por Emprendedor:
+administrator.dashboard.form.label.averageApplicationsPerInvestor = Media de Solicitudes por Inversor:
+
 administrator.dashboard.form.button.return = Volver

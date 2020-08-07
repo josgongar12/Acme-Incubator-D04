@@ -45,4 +45,18 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query("select o from Overture o where deadline>CURRENT_TIMESTAMP")
 	Collection<Overture> stddevMoneyActiveOvertures();
+
+	//D04
+
+	@Query("select count(e) from Entrepreneur e")
+	Double numberEntrepreneurs();
+
+	@Query("select count(ir) from InvestmentRound ir")
+	Double numberInvestmentRounds();
+
+	@Query("select count(a) from Application a")
+	Double numberApplications();
+
+	@Query("select count(i) from Investor i")
+	Double numberInvestors();
 }

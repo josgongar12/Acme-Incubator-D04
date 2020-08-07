@@ -36,9 +36,7 @@ public class AdministratorDashboardShow implements AbstractShowService<Administr
 		assert model != null;
 
 		request.unbind(entity, model, "numberNotices", "numberTechnologies", "numberTools", "minMoneyActiveInquiries", "maxMoneyActiveInquiries", "averageMoneyActiveInquiries", "stddevMoneyActiveInquiries", "minMoneyActiveOvertures",
-			"maxMoneyActiveOvertures",
-
-			"averageMoneyActiveOvertures", "stddevMoneyActiveOvertures");
+			"maxMoneyActiveOvertures", "averageMoneyActiveOvertures", "stddevMoneyActiveOvertures", "averageInvestmentRoundsPerEntrepreneur", "averageApplicationsPerEntrepreneur", "averageApplicationsPerInvestor");
 	}
 
 	@Override
@@ -87,6 +85,12 @@ public class AdministratorDashboardShow implements AbstractShowService<Administr
 		}
 		Double stddevOver = AdministratorDashboardShow.stdev(maxAndMinO, avgMonOver);
 		res.setStddevMoneyActiveOvertures(stddevOver);
+		Double avgInvEnt = this.repository.numberInvestmentRounds() / this.repository.numberEntrepreneurs();
+		res.setAverageInvestmentRoundsPerEntrepreneur(avgInvEnt);
+		Double avgAppEnt = this.repository.numberApplications() / this.repository.numberEntrepreneurs();
+		res.setAverageApplicationsPerEntrepreneur(avgAppEnt);
+		Double avgAppInv = this.repository.numberApplications() / this.repository.numberInvestors();
+		res.setAverageApplicationsPerInvestor(avgAppInv);
 		return res;
 	}
 
