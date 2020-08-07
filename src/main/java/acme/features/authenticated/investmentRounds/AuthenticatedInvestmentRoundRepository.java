@@ -12,7 +12,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuthenticatedInvestmentRoundRepository extends AbstractRepository {
 
-	@Query("select wp.investmentRound from WorkProgramme wp where deadline>CURRENT_TIMESTAMP")
+	@Query("select ir from InvestmentRound ir")
 	Collection<InvestmentRound> findActivesInvestmentRounds();
 
 	@Query("select ir from InvestmentRound ir where ir.id =?1")

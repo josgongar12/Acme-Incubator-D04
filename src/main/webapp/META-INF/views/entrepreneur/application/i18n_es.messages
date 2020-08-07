@@ -1,4 +1,4 @@
-entrepreneur.application.form.label.ticker = Ticket
+entrepreneur.application.form.label.ticker = Ticker
 entrepreneur.application.form.label.moment = Fecha
 entrepreneur.application.form.label.statement = Estado 
 entrepreneur.application.form.label.moneyOffer = Dinero
@@ -6,7 +6,7 @@ entrepreneur.application.form.label.referenceInvestmentRound = Ticker Ronda Inve
 entrepreneur.application.form.label.InvestmentRoundEntrepreneur = Emprendedor
 
 
-entrepreneur.application.list.label.ticker = Ticket
+entrepreneur.application.list.label.ticker = Ticker
 entrepreneur.application.list.label.moment = Fecha
 entrepreneur.application.list.label.statement = Estado 
 entrepreneur.application.list.label.moneyOffert = Dinero
