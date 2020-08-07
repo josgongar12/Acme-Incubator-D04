@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
 -- Host: localhost    Database: acme-incubator
 -- ------------------------------------------------------
--- Server version	8.0.17
+-- Server version	8.0.20
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -15,6 +15,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
 --
 -- Table structure for table `administrator`
 --
@@ -23,9 +24,9 @@ DROP TABLE IF EXISTS `administrator`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `administrator` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `user_account_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `user_account_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_2a5vcjo3stlfcwadosjfq49l1` (`user_account_id`),
   CONSTRAINT `FK_2a5vcjo3stlfcwadosjfq49l1` FOREIGN KEY (`user_account_id`) REFERENCES `user_account` (`id`)
@@ -50,9 +51,9 @@ DROP TABLE IF EXISTS `anonymous`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `anonymous` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `user_account_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `user_account_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_6lnbc6fo3om54vugoh8icg78m` (`user_account_id`),
   CONSTRAINT `FK_6lnbc6fo3om54vugoh8icg78m` FOREIGN KEY (`user_account_id`) REFERENCES `user_account` (`id`)
@@ -70,6 +71,43 @@ INSERT INTO `anonymous` VALUES (2,0,1);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `application`
+--
+
+DROP TABLE IF EXISTS `application`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `application` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `moment` datetime(6) DEFAULT NULL,
+  `money_offer_amount` double DEFAULT NULL,
+  `money_offer_currency` varchar(255) DEFAULT NULL,
+  `statement` varchar(255) DEFAULT NULL,
+  `ticker` varchar(255) DEFAULT NULL,
+  `entrepreneur_id` int NOT NULL,
+  `investment_round_id` int NOT NULL,
+  `investor_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKp6hc01e2bc6ly2q8rv4b7ubro` (`entrepreneur_id`),
+  KEY `FKk5ibe41quxsif8im882xv4afo` (`investment_round_id`),
+  KEY `FKl4fp0cd8c008ma79n6w58xhk9` (`investor_id`),
+  CONSTRAINT `FKk5ibe41quxsif8im882xv4afo` FOREIGN KEY (`investment_round_id`) REFERENCES `investment_round` (`id`),
+  CONSTRAINT `FKl4fp0cd8c008ma79n6w58xhk9` FOREIGN KEY (`investor_id`) REFERENCES `investor` (`id`),
+  CONSTRAINT `FKp6hc01e2bc6ly2q8rv4b7ubro` FOREIGN KEY (`entrepreneur_id`) REFERENCES `entrepreneur` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `application`
+--
+
+LOCK TABLES `application` WRITE;
+/*!40000 ALTER TABLE `application` DISABLE KEYS */;
+/*!40000 ALTER TABLE `application` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `authenticated`
 --
 
@@ -77,9 +115,9 @@ DROP TABLE IF EXISTS `authenticated`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `authenticated` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `user_account_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `user_account_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_h52w0f3wjoi68b63wv9vwon57` (`user_account_id`),
   CONSTRAINT `FK_h52w0f3wjoi68b63wv9vwon57` FOREIGN KEY (`user_account_id`) REFERENCES `user_account` (`id`)
@@ -104,18 +142,21 @@ DROP TABLE IF EXISTS `banner`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `banner` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `brand` varchar(255) DEFAULT NULL,
   `cvv` varchar(255) DEFAULT NULL,
   `holder_name` varchar(255) DEFAULT NULL,
-  `month_expiration` int(11) DEFAULT NULL,
+  `month_expiration` int DEFAULT NULL,
   `number` varchar(255) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
   `slogan` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
-  `year_expiration` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `year_expiration` int DEFAULT NULL,
+  `patron_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKdocr1jjfgwx9ef5jbf675l360` (`patron_id`),
+  CONSTRAINT `FKdocr1jjfgwx9ef5jbf675l360` FOREIGN KEY (`patron_id`) REFERENCES `patron` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -125,8 +166,35 @@ CREATE TABLE `banner` (
 
 LOCK TABLES `banner` WRITE;
 /*!40000 ALTER TABLE `banner` DISABLE KEYS */;
-INSERT INTO `banner` VALUES (29,0,'Simpson','234','Homero',11,'5224746025394443','https://pbs.twimg.com/media/CO8i4GIWoAEc7-d.jpg','Aniram al ne etatsila','https://es.wikipedia.org/wiki/Armada_de_los_Estados_Unidos',2031),(30,0,'Destroy All Human','123','Crypto',3,'6432109876543210','https://s0.mundogamers.com/img/news/23124/destroy_all_humans_regresa_con_humor_y_las_interesantes_estructuras_clasicas_de_juego_1.jpg','MUUUtantes','https://www.vidaextra.com/analisis/retorno-destroy-all-humans-muestra-divertidisimo-potencial-doble-a-descerebrado-e-irreverente',2021);
 /*!40000 ALTER TABLE `banner` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bookkeeper`
+--
+
+DROP TABLE IF EXISTS `bookkeeper`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bookkeeper` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `user_account_id` int DEFAULT NULL,
+  `firm_name` varchar(255) DEFAULT NULL,
+  `responsibility_statement` varchar(3000) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_krvjp9eaqyapewl2igugbo9o8` (`user_account_id`),
+  CONSTRAINT `FK_krvjp9eaqyapewl2igugbo9o8` FOREIGN KEY (`user_account_id`) REFERENCES `user_account` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bookkeeper`
+--
+
+LOCK TABLES `bookkeeper` WRITE;
+/*!40000 ALTER TABLE `bookkeeper` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bookkeeper` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -137,8 +205,8 @@ DROP TABLE IF EXISTS `challenge`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `challenge` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `average_goal` varchar(255) DEFAULT NULL,
   `average_reward_amount` double DEFAULT NULL,
   `average_reward_currency` varchar(255) DEFAULT NULL,
@@ -161,7 +229,6 @@ CREATE TABLE `challenge` (
 
 LOCK TABLES `challenge` WRITE;
 /*!40000 ALTER TABLE `challenge` DISABLE KEYS */;
-INSERT INTO `challenge` VALUES (18,0,'Challenge average goal 01',75,'€','2021-06-20 20:00:00.000000','Sample description 01','Challenge expert goal 01',125,'€','Challenge rookie goal 01',50,'€','Title Challenge 01'),(19,0,'Challenge average goal 02',200,'€','2020-08-05 20:00:00.000000','Sample description 02','Challenge expert goal 02',300,'€','Challenge rookie goal 02',100,'€','Title Challenge 02'),(20,0,'Challenge average goal 03',300,'€','2020-02-05 21:00:00.000000','Sample description 03','Challenge expert goal 03',400,'€','Challenge rookie goal 03',200,'€','Title Challenge 03');
 /*!40000 ALTER TABLE `challenge` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,9 +240,9 @@ DROP TABLE IF EXISTS `consumer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `consumer` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `user_account_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `user_account_id` int DEFAULT NULL,
   `company` varchar(255) DEFAULT NULL,
   `sector` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -201,8 +268,8 @@ DROP TABLE IF EXISTS `customisation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customisation` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `activity_sectors` varchar(255) DEFAULT NULL,
   `spamwords` varchar(255) DEFAULT NULL,
   `threshold` double DEFAULT NULL,
@@ -216,7 +283,6 @@ CREATE TABLE `customisation` (
 
 LOCK TABLES `customisation` WRITE;
 /*!40000 ALTER TABLE `customisation` DISABLE KEYS */;
-INSERT INTO `customisation` VALUES (21,0,'Technology,Science,Arts,Business,Health','sex,hard core,viagra,cialis,nigeria,you\'ve won, million dollar,sexo,duro,has ganado,millon de dolares',2.5);
 /*!40000 ALTER TABLE `customisation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,8 +294,8 @@ DROP TABLE IF EXISTS `donaire_bulletin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `donaire_bulletin` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `author` varchar(255) DEFAULT NULL,
   `moment` datetime(6) DEFAULT NULL,
   `text` varchar(255) DEFAULT NULL,
@@ -243,8 +309,37 @@ CREATE TABLE `donaire_bulletin` (
 
 LOCK TABLES `donaire_bulletin` WRITE;
 /*!40000 ALTER TABLE `donaire_bulletin` DISABLE KEYS */;
-INSERT INTO `donaire_bulletin` VALUES (7,0,'Carlos Ruiz Zafón','2020-05-01 19:00:00.000000','La sombra del viento');
 /*!40000 ALTER TABLE `donaire_bulletin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `entrepreneur`
+--
+
+DROP TABLE IF EXISTS `entrepreneur`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `entrepreneur` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `user_account_id` int DEFAULT NULL,
+  `activity_sector` varchar(255) DEFAULT NULL,
+  `qualification_record` varchar(255) DEFAULT NULL,
+  `skills_record` varchar(255) DEFAULT NULL,
+  `start_up_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_r6tqltqvrlh1cyy8rsj5pev1q` (`user_account_id`),
+  CONSTRAINT `FK_r6tqltqvrlh1cyy8rsj5pev1q` FOREIGN KEY (`user_account_id`) REFERENCES `user_account` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `entrepreneur`
+--
+
+LOCK TABLES `entrepreneur` WRITE;
+/*!40000 ALTER TABLE `entrepreneur` DISABLE KEYS */;
+/*!40000 ALTER TABLE `entrepreneur` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -255,8 +350,8 @@ DROP TABLE IF EXISTS `fernandez_bulletin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fernandez_bulletin` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `moment` datetime(6) DEFAULT NULL,
   `name_character` varchar(255) DEFAULT NULL,
   `skills` varchar(255) DEFAULT NULL,
@@ -270,8 +365,35 @@ CREATE TABLE `fernandez_bulletin` (
 
 LOCK TABLES `fernandez_bulletin` WRITE;
 /*!40000 ALTER TABLE `fernandez_bulletin` DISABLE KEYS */;
-INSERT INTO `fernandez_bulletin` VALUES (8,0,'2020-03-01 20:00:00.000000','Solaire','The power of sunlight');
 /*!40000 ALTER TABLE `fernandez_bulletin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum`
+--
+
+DROP TABLE IF EXISTS `forum`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `forum` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `users` varchar(255) DEFAULT NULL,
+  `investment_round_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKq8ggcjgl5by5gf6l5bji632hu` (`investment_round_id`),
+  CONSTRAINT `FKq8ggcjgl5by5gf6l5bji632hu` FOREIGN KEY (`investment_round_id`) REFERENCES `investment_round` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forum`
+--
+
+LOCK TABLES `forum` WRITE;
+/*!40000 ALTER TABLE `forum` DISABLE KEYS */;
+/*!40000 ALTER TABLE `forum` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -282,8 +404,8 @@ DROP TABLE IF EXISTS `gonzalez_bulletin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gonzalez_bulletin` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `director` varchar(255) DEFAULT NULL,
   `moment` datetime(6) DEFAULT NULL,
   `movie` varchar(255) DEFAULT NULL,
@@ -297,7 +419,6 @@ CREATE TABLE `gonzalez_bulletin` (
 
 LOCK TABLES `gonzalez_bulletin` WRITE;
 /*!40000 ALTER TABLE `gonzalez_bulletin` DISABLE KEYS */;
-INSERT INTO `gonzalez_bulletin` VALUES (10,0,'Christopher Nolan','2020-07-10 15:00:00.000000','Interstellar');
 /*!40000 ALTER TABLE `gonzalez_bulletin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -309,7 +430,7 @@ DROP TABLE IF EXISTS `hibernate_sequence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint(20) DEFAULT NULL
+  `next_val` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -319,7 +440,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (31);
+INSERT INTO `hibernate_sequence` VALUES (6);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,8 +452,8 @@ DROP TABLE IF EXISTS `inquire`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `inquire` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `creation_date` datetime(6) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -364,8 +485,8 @@ DROP TABLE IF EXISTS `inquirie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `inquirie` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `creation_date` datetime(6) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -385,8 +506,70 @@ CREATE TABLE `inquirie` (
 
 LOCK TABLES `inquirie` WRITE;
 /*!40000 ALTER TABLE `inquirie` DISABLE KEYS */;
-INSERT INTO `inquirie` VALUES (16,0,'2020-07-20 15:00:00.000000','this is the first inquire.','inquire@gmail.com','2020-12-10 16:00:00.000000',100.23,'€',20.23,'€','my first inquirie'),(17,0,'2020-06-20 15:00:00.000000','this is the second inquire.','inquire2@gmail.com','2020-12-11 16:00:00.000000',400.23,'€',20.24,'€','my second inquirie');
 /*!40000 ALTER TABLE `inquirie` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `investment_round`
+--
+
+DROP TABLE IF EXISTS `investment_round`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `investment_round` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `amount_money_amount` double DEFAULT NULL,
+  `amount_money_currency` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `kind_round` varchar(255) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `moment` datetime(6) DEFAULT NULL,
+  `ticker` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `entrepreneur_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKkj1l8c2ftn9c65y061me6t37j` (`entrepreneur_id`),
+  CONSTRAINT `FKkj1l8c2ftn9c65y061me6t37j` FOREIGN KEY (`entrepreneur_id`) REFERENCES `entrepreneur` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `investment_round`
+--
+
+LOCK TABLES `investment_round` WRITE;
+/*!40000 ALTER TABLE `investment_round` DISABLE KEYS */;
+/*!40000 ALTER TABLE `investment_round` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `investor`
+--
+
+DROP TABLE IF EXISTS `investor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `investor` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `user_account_id` int DEFAULT NULL,
+  `activity_sector` varchar(255) DEFAULT NULL,
+  `firm_name` varchar(255) DEFAULT NULL,
+  `profile` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_dcek5rr514s3rww0yy57vvnpq` (`user_account_id`),
+  CONSTRAINT `FK_dcek5rr514s3rww0yy57vvnpq` FOREIGN KEY (`user_account_id`) REFERENCES `user_account` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `investor`
+--
+
+LOCK TABLES `investor` WRITE;
+/*!40000 ALTER TABLE `investor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `investor` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -397,8 +580,8 @@ DROP TABLE IF EXISTS `jimenez_bulletin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `jimenez_bulletin` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `hero_name` varchar(255) DEFAULT NULL,
   `moment` datetime(6) DEFAULT NULL,
   `phrase` varchar(255) DEFAULT NULL,
@@ -412,7 +595,6 @@ CREATE TABLE `jimenez_bulletin` (
 
 LOCK TABLES `jimenez_bulletin` WRITE;
 /*!40000 ALTER TABLE `jimenez_bulletin` DISABLE KEYS */;
-INSERT INTO `jimenez_bulletin` VALUES (6,0,'Thanos','2020-01-20 09:00:00.000000','Yo soy inevitable');
 /*!40000 ALTER TABLE `jimenez_bulletin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,8 +606,8 @@ DROP TABLE IF EXISTS `marin_bulletin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `marin_bulletin` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `moment` datetime(6) DEFAULT NULL,
   `web` varchar(255) DEFAULT NULL,
@@ -439,8 +621,40 @@ CREATE TABLE `marin_bulletin` (
 
 LOCK TABLES `marin_bulletin` WRITE;
 /*!40000 ALTER TABLE `marin_bulletin` DISABLE KEYS */;
-INSERT INTO `marin_bulletin` VALUES (9,0,'Página de una tienda de videojuegos.','2020-02-01 20:00:00.000000','https://www.game.es/');
 /*!40000 ALTER TABLE `marin_bulletin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `message` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `body` varchar(255) DEFAULT NULL,
+  `moment` datetime(6) DEFAULT NULL,
+  `tags` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `forum_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKfwwpivgx5j4vw4594dgrw884q` (`forum_id`),
+  KEY `FKik4epe9dp5q6uenarfyia7xin` (`user_id`),
+  CONSTRAINT `FKfwwpivgx5j4vw4594dgrw884q` FOREIGN KEY (`forum_id`) REFERENCES `forum` (`id`),
+  CONSTRAINT `FKik4epe9dp5q6uenarfyia7xin` FOREIGN KEY (`user_id`) REFERENCES `authenticated` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `message`
+--
+
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -451,8 +665,8 @@ DROP TABLE IF EXISTS `notice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `notice` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `body` varchar(255) DEFAULT NULL,
   `creation_moment` datetime(6) DEFAULT NULL,
   `deadline` datetime(6) DEFAULT NULL,
@@ -469,7 +683,6 @@ CREATE TABLE `notice` (
 
 LOCK TABLES `notice` WRITE;
 /*!40000 ALTER TABLE `notice` DISABLE KEYS */;
-INSERT INTO `notice` VALUES (14,0,'Body Notice 1','2020-07-21 16:00:00.000000','2020-12-20 16:00:00.000000','https://ar.pinterest.com/pin/833940055989345675/','','Notice 1'),(15,0,'Body Notice 2, esta noticia solo deberia de aparecer cuando somos Admin','2020-07-21 16:00:00.000000','2020-07-22 09:00:00.000000','https://ar.pinterest.com/pin/833940055989345675/','','Notice 2');
 /*!40000 ALTER TABLE `notice` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -481,8 +694,8 @@ DROP TABLE IF EXISTS `overture`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `overture` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `deadline` datetime(6) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -502,8 +715,38 @@ CREATE TABLE `overture` (
 
 LOCK TABLES `overture` WRITE;
 /*!40000 ALTER TABLE `overture` DISABLE KEYS */;
-INSERT INTO `overture` VALUES (22,0,'2020-11-20 09:00:00.000000','This is a description 1','overture01@gmail.com',700,'€',100,'€','2020-03-10 10:00:00.000000','Title 1'),(23,0,'2020-11-10 09:00:00.000000','This is a description 2','overture2@gmail.com',800,'€',200,'€','2020-01-01 14:00:00.000000','Title 2');
 /*!40000 ALTER TABLE `overture` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `patron`
+--
+
+DROP TABLE IF EXISTS `patron`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `patron` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `user_account_id` int DEFAULT NULL,
+  `cvv` varchar(255) DEFAULT NULL,
+  `month_expiration` int DEFAULT NULL,
+  `number` varchar(255) DEFAULT NULL,
+  `organisation` varchar(255) DEFAULT NULL,
+  `year_expiration` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_8xx5nujhuio3advxc2freyu65` (`user_account_id`),
+  CONSTRAINT `FK_8xx5nujhuio3advxc2freyu65` FOREIGN KEY (`user_account_id`) REFERENCES `user_account` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `patron`
+--
+
+LOCK TABLES `patron` WRITE;
+/*!40000 ALTER TABLE `patron` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patron` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -514,9 +757,9 @@ DROP TABLE IF EXISTS `provider`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `provider` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
-  `user_account_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `user_account_id` int DEFAULT NULL,
   `company` varchar(255) DEFAULT NULL,
   `sector` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -542,14 +785,14 @@ DROP TABLE IF EXISTS `technology`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `technology` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `activity_sector` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `indication` varchar(255) DEFAULT NULL,
   `inventor_name` varchar(255) DEFAULT NULL,
-  `stars` int(11) DEFAULT NULL,
+  `stars` int DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `web_site` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -562,7 +805,6 @@ CREATE TABLE `technology` (
 
 LOCK TABLES `technology` WRITE;
 /*!40000 ALTER TABLE `technology` DISABLE KEYS */;
-INSERT INTO `technology` VALUES (11,0,'Sector 1','Description 1','email1@gmail.com','closed-source','Name 1',3,'Title 1','https://www.website1.com/'),(12,0,'Sector 2','Description 2','email2@gmail.com','open-source','Name 2',-5,'Title 2','https://www.website2.com/'),(13,0,'Sector 3','Description 3','email3@gmail.com','open-source','Name 3',NULL,'Title 3','https://www.website3.com/');
 /*!40000 ALTER TABLE `technology` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -574,14 +816,14 @@ DROP TABLE IF EXISTS `tool_record`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tool_record` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `indication` varchar(255) DEFAULT NULL,
   `inventor` varchar(255) DEFAULT NULL,
   `sector` varchar(255) DEFAULT NULL,
-  `stars` int(11) DEFAULT NULL,
+  `stars` int DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `web` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -594,7 +836,6 @@ CREATE TABLE `tool_record` (
 
 LOCK TABLES `tool_record` WRITE;
 /*!40000 ALTER TABLE `tool_record` DISABLE KEYS */;
-INSERT INTO `tool_record` VALUES (24,0,'This is a description 1','email1@gmail.com','open-source','Inventor 1','Sector 1',2,'Tool Record 1','https://www.website1.com/'),(25,0,'This is a description 2','email2@gmail.com','closed-source','Inventor 2','Sector 2',-3,'Tool Record 2','https://www.website2.com/'),(26,0,'This is a description 3','email3@gmail.com','open-source','Inventor 3','Sector 3',5,'Tool Record 3','https://www.website3.com/'),(27,0,'This is a description 4','email4@gmail.com','closed-source','Inventor 2','Sector 1',2,'Tool Record 4','https://www.website4.com/'),(28,0,'This is a description 5','email5@gmail.com','open-source','Inventor 1','Sector 3',5,'Tool Record 5','https://www.website5.com/');
 /*!40000 ALTER TABLE `tool_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -606,8 +847,8 @@ DROP TABLE IF EXISTS `user_account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_account` (
-  `id` int(11) NOT NULL,
-  `version` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `version` int NOT NULL,
   `enabled` bit(1) NOT NULL,
   `identity_email` varchar(255) DEFAULT NULL,
   `identity_name` varchar(255) DEFAULT NULL,
@@ -625,8 +866,39 @@ CREATE TABLE `user_account` (
 
 LOCK TABLES `user_account` WRITE;
 /*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
-INSERT INTO `user_account` VALUES (1,0,_binary '\0','john.doe@acme.com','John','Doe','$2a$05$WtQmGZz59o7cQ8P5AJmhJer8GIGUSC1tkvcKbKVaVnR8i/yPUzqqy','anonymous'),(3,0,_binary '','administrator@acme.com','Administrator','Acme.com','$2a$05$ATuSUABzM75UMTsmJWnV6OLQ2cw/TbI4.3tVj.Pb6SFQGgU6B3dxC','administrator');
+INSERT INTO `user_account` VALUES (1,0,_binary '\0','john.doe@acme.com','John','Doe','$2a$05$EBVkCSjAXgQ7qvk2dYl9Q.Pa2h8eR3I8auN4tl6dloK44YvmfHuzu','anonymous'),(3,0,_binary '','administrator@acme.com','Administrator','Acme.com','$2a$05$MxIy.H9Hl2O5CUFPyBReE.XXZQFP43LeiiBMKhCwfpghZfnQXiBTG','administrator');
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `work_programme`
+--
+
+DROP TABLE IF EXISTS `work_programme`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `work_programme` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `budget_amount` double DEFAULT NULL,
+  `budget_currency` varchar(255) DEFAULT NULL,
+  `deadline` datetime(6) DEFAULT NULL,
+  `moment` datetime(6) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `investment_round_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK3nxyaik1cnvfdg02p9a8ibiko` (`investment_round_id`),
+  CONSTRAINT `FK3nxyaik1cnvfdg02p9a8ibiko` FOREIGN KEY (`investment_round_id`) REFERENCES `investment_round` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `work_programme`
+--
+
+LOCK TABLES `work_programme` WRITE;
+/*!40000 ALTER TABLE `work_programme` DISABLE KEYS */;
+/*!40000 ALTER TABLE `work_programme` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -638,4 +910,38 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-03 17:16:01
+--
+-- Table structure for table `accounting_record`
+--
+
+DROP TABLE IF EXISTS `accounting_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `accounting_record` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `body` varchar(255) DEFAULT NULL,
+  `creation_moment` datetime(6) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `bookkeeper_id` int NOT NULL,
+  `investment_round_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK41jm4vk7runvmg5tderffrele` (`bookkeeper_id`),
+  KEY `FKk1pmfnppwk0kav7xloy8u71uq` (`investment_round_id`),
+  CONSTRAINT `FK41jm4vk7runvmg5tderffrele` FOREIGN KEY (`bookkeeper_id`) REFERENCES `bookkeeper` (`id`),
+  CONSTRAINT `FKk1pmfnppwk0kav7xloy8u71uq` FOREIGN KEY (`investment_round_id`) REFERENCES `investment_round` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accounting_record`
+--
+
+LOCK TABLES `accounting_record` WRITE;
+/*!40000 ALTER TABLE `accounting_record` DISABLE KEYS */;
+/*!40000 ALTER TABLE `accounting_record` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+-- Dump completed on 2020-08-07 23:12:27
