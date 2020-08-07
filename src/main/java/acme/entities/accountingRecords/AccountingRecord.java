@@ -1,4 +1,5 @@
 /*
+ * 
  * Consumer.java
  *
  * Copyright (c) 2019 Rafael Corchuelo.
@@ -62,8 +63,7 @@ public class AccountingRecord extends DomainEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-
-	private InvestmentRound					investmentRound;
+	private InvestmentRound		investmentRound;
 
 	@NotNull
 	@Valid

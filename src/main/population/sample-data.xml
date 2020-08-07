@@ -566,36 +566,36 @@
 	</bean>
 
 	<!-- Applications -->
-
-	<bean name="application1" class="acme.entities.applications.Application">
-		<property name="ticker" value="TEC-20-246802" />
-		<property name="moment" value="2020/02/11 23:59" />
-		<property name="statement" value="In Progress" />
-		<property name="moneyOffer" value="1200€" />
-		<property name="entrepreneur" ref="entrepreneur1Entrepreneur" />
-		<property name="investor" ref="investor1Investor" />
-		<property name="investmentRound" ref="investmentRound1" />
-	</bean>
-
-	<bean name="application2" class="acme.entities.applications.Application">
-		<property name="ticker" value="TEC-19-975310" />
-		<property name="moment" value="2019/01/10 13:59" />
-		<property name="statement" value="Finished" />
-		<property name="moneyOffer" value="500€" />
-		<property name="entrepreneur" ref="entrepreneur1Entrepreneur" />
-		<property name="investor" ref="investor1Investor" />
-		<property name="investmentRound" ref="investmentRound2" />
-	</bean>
-
-	<bean name="application3" class="acme.entities.applications.Application">
-		<property name="ticker" value="SOF-20-124836" />
-		<property name="moment" value="2020/04/15 12:15" />
-		<property name="statement" value="In Progress" />
-		<property name="moneyOffer" value="750€" />
-		<property name="entrepreneur" ref="entrepreneur2Entrepreneur" />
-		<property name="investor" ref="investor2Investor" />
-		<property name="investmentRound" ref="investmentRound3" />
-	</bean>
+	
+  	<bean name="application1" class="acme.entities.applications.Application">
+  		<property name="ticker" value="TEC-20-246802" />
+  		<property name="moment" value="2020/02/11 23:59" />
+  		<property name="statement" value="Application 1" />
+  		<property name="moneyOffer" value="1200€" />
+  		<property name="entrepreneur" ref="entrepreneur1Entrepreneur" /> 
+  		<property name="investor" ref="investor1Investor" />
+  		<property name="investmentRound" ref="investmentRound1" />
+  	</bean>
+  	
+  	<bean name="application2" class="acme.entities.applications.Application">
+  		<property name="ticker" value="TEC-19-975310" />
+  		<property name="moment" value="2019/01/10 13:59" />
+  		<property name="statement" value="Application 2" />
+  		<property name="moneyOffer" value="500€" />
+  		<property name="entrepreneur" ref="entrepreneur1Entrepreneur" />
+  		<property name="investor" ref="investor1Investor" />
+  		<property name="investmentRound" ref="investmentRound2" />
+  	</bean>
+  	
+  	<bean name="application3" class="acme.entities.applications.Application">
+  		<property name="ticker" value="SOF-20-124836" />
+  		<property name="moment" value="2020/04/15 12:15" />
+  		<property name="statement" value="Application 3" />
+  		<property name="moneyOffer" value="750€" />
+  		<property name="entrepreneur" ref="entrepreneur2Entrepreneur" /> 
+  		<property name="investor" ref="investor2Investor" />
+  		<property name="investmentRound" ref="investmentRound3" />
+  	</bean>
 
 
 	<!-- Bookkeepers -->

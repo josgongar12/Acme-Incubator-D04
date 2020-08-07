@@ -65,31 +65,18 @@
 			<acme:menu-suboption code="master.menu.anonymous.list-tool-record" action="/anonymous/tool-record/list"/>
 		</acme:menu-option>
 	
-		<acme:menu-option code="master.menu.authenticated.notice" access="isAuthenticated()">
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.list-notice" action="/authenticated/notice/list"/>
-
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.authenticated.technology" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.list-technology" action="/authenticated/technology/list"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.authenticated.tool-record" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.list-tool-record" action="/authenticated/tool-record/list"/>
-		</acme:menu-option>
-		<acme:menu-option code="master.menu.authenticated.challenge" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.list-challenge" action="/authenticated/challenge/list"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.authenticated.overture" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.list-overture" action="/authenticated/overture/list"/>
-		</acme:menu-option>
-		<acme:menu-option code="master.menu.authenticated.inquirie" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.list-inquirie" action="/authenticated/inquirie/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.list-overture" action="/authenticated/overture/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.list-challenge" action="/authenticated/challenge/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.list-investmentRound" action="/authenticated/investment-round/list"/>
+      <acme:menu-suboption code="master.menu.authenticated.list-mine.forum" action="/authenticated/forum/list-mine"/>
 		</acme:menu-option>
-		<acme:menu-option code="master.menu.authenticated.forum" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.list-mine.forum" action="/authenticated/forum/list-mine"/>
-		</acme:menu-option>
+	
 
 		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
 			<acme:menu-suboption code="master.menu.patron.create-banner" action="/patron/banner/create"/>
@@ -163,7 +150,14 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 		
+
+		<acme:menu-option code="master.menu.entrepreneur" access="hasRole('Entrepreneur')">
+			<acme:menu-suboption code="master.menu.entrepreneur.list-investmentRound" action="/entrepreneur/investment-round/list"/>
+		</acme:menu-option>
+
 	</acme:menu-left>
+	
+	
 
 	<acme:menu-right>
 		<acme:menu-option code="master.menu.sign-up" action="/anonymous/user-account/create" access="isAnonymous()"/>

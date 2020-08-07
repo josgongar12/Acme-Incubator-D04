@@ -67,25 +67,20 @@ master.menu.anonymous.list-tool-record = Lista de registros de herramientas
 master.menu.authenticated = Autenticado
 
 
-master.menu.authenticated.inquirie = Consultas
 master.menu.authenticated.list-inquirie = Lista de consultas
 
-master.menu.authenticated.challenge = Desafio
 master.menu.authenticated.list-challenge = Lista de desafios
 
-master.menu.authenticated.overture = Oberturas
 master.menu.authenticated.list-overture = Lista de oberturas
 
-master.menu.authenticated.notice = Anuncios
 master.menu.authenticated.list-notice = Lista de Anuncios
 
-master.menu.authenticated.technology = Registro de Tecnologia
 master.menu.authenticated.list-technology = Lista de registros de tecnologia
 
-master.menu.authenticated.tool-record = Registro de Herramientas
 master.menu.authenticated.list-tool-record = Lista registros de herramientas
 
-master.menu.authenticated.forum = Foros
+master.menu.authenticated.list-investmentRound = Lista de ronda de inversiones
+
 master.menu.authenticated.list-mine.forum = Mis foros
 
 # master.menu.administrator ###################################################
@@ -136,10 +131,10 @@ master.menu.patron = Cliente
 master.menu.patron.create-banner = Crear banner
 master.menu.patron.list-mine-banner = Lista de mis banners
 
-
 #master.menu.entrepreneur ####################################
 master.menu.entrepreneur = Emprendedor
 master.menu.entrepreneur.list-mine-application = Lista aplicaciones
+master.menu.entrepreneur.list-investmentRound = Lista de ronda de inversiones
 
 # master.menu.bookkeeper ##########################################################
 
