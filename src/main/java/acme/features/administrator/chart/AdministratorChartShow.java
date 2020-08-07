@@ -31,8 +31,8 @@ public class AdministratorChartShow implements AbstractShowService<Administrator
 
 		request.unbind(entity, model, "numberOfTechonologiesGroupedBySector", "numberOfToolsGroupedBySector");
 		request.unbind(entity, model, "ratioOfTechnologiesGroupedByStatus", "ratioOfToolsGroupedByStatus");
+		request.unbind(entity, model, "ratioOfInvestmentRoundGroupedByKindRound", "ratioOfApplicationsGroupedByStatement");
 		
-
 	}
 
 	@Override
@@ -49,6 +49,10 @@ public class AdministratorChartShow implements AbstractShowService<Administrator
 		d.setRatioOfTechnologiesGroupedByStatus(technologiessByStatus);
 		Object[] toolsByStatus = this.repository.findToolsStatus();
 		d.setRatioOfToolsGroupedByStatus(toolsByStatus);
+		Object[] investmentRoundByKindRound = this.repository.findInvestmentRoundKindRound();
+		d.setRatioOfInvestmentRoundGroupedByKindRound(investmentRoundByKindRound);
+		Object[] applicationsByStatement = this.repository.findApplicationStatement();
+		d.setRatioOfApplicationsGroupedByStatement(applicationsByStatement);
 		
 		return d;
 	}

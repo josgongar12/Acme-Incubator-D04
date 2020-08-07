@@ -34,8 +34,15 @@
 	<acme:message code="administrator.chart.form.label.toolsByStatus"/>
 	    <canvas id="ratioOfToolsGroupedByStatus"></canvas>
 	</div>
-	
-	
+	<div>
+	<acme:message code="administrator.chart.form.label.investmentRoundByKind"/>
+		<canvas id="ratioOfInvestmentRoundGroupedByKindRound"></canvas>
+	</div>
+	<br></br>
+	<div>
+	<acme:message code="administrator.chart.form.label.ApplicationsByStatement"/>
+    	<canvas id="ratioOfApplicationsGroupedByStatement"></canvas>
+	</div>
 
 	
 
@@ -179,6 +186,63 @@
 			 data: DataInvestor
 		 });
 	 }); 
+	 
+	 $(document).ready(function(){
+		 var CanvasInvestor = document.getElementById("ratioOfInvestmentRoundGroupedByKindRound");
+		 Chart.defaults.global.defaultFontFamily = "Modeka";
+		 Chart.defaults.global.defaultFontSize = 15;
+		 
+		 var DataInvestor = {
+				 labels : [
+					 <jstl:forEach items = "${ratioOfInvestmentRoundGroupedByKindRound}" var="item">
+					 "<jstl:out value= "${item[0]}" />" ,
+					 </jstl:forEach>
+				 ],
+				 datasets:[
+					 {
+						 data: [
+							 <jstl:forEach items= "${ratioOfInvestmentRoundGroupedByKindRound}" var="item">
+							 "<jstl:out value = "${item[1]}" />" ,
+							 </jstl:forEach>
+						 ],
+						 backgroundColor :["blue", "red", "yellow", "green", "purple", "pink"]
+					 }
+				 ]
+		 };
+		 var pieChartInvestor = new Chart(CanvasInvestor, {
+			 type: 'pie',
+			 data: DataInvestor
+		 });
+	 });
+	 
+	 $(document).ready(function(){
+		 var CanvasInvestor = document.getElementById("ratioOfApplicationsGroupedByStatement");
+		 Chart.defaults.global.defaultFontFamily = "Modeka";
+		 Chart.defaults.global.defaultFontSize = 15;
+		 
+		 var DataInvestor = {
+				 labels : [
+					 <jstl:forEach items = "${ratioOfApplicationsGroupedByStatement}" var="item">
+					 "<jstl:out value= "${item[0]}" />" ,
+					 </jstl:forEach>
+				 ],
+				 datasets:[
+					 {
+						 data: [
+							 <jstl:forEach items= "${ratioOfApplicationsGroupedByStatement}" var="item">
+							 "<jstl:out value = "${item[1]}" />" ,
+							 </jstl:forEach>
+						 ],
+						 backgroundColor :["blue", "red", "green"]
+					 }
+				 ]
+		 };
+		 var pieChartInvestor = new Chart(CanvasInvestor, {
+			 type: 'pie',
+			 data: DataInvestor
+		 });
+	 });
+	 
 	 
 
 	 

@@ -81,7 +81,7 @@ master.menu.authenticated.list-tool-record = List of Tool Records
 
 master.menu.authenticated.list-investmentRound = List of investments rounds
 
-
+master.menu.authenticated.list-mine.forum = My forums
 
 # master.menu.administrator ###################################################
 
@@ -129,9 +129,19 @@ master.menu.patron = Patron
 master.menu.patron.create-banner = Create banner
 master.menu.patron.list-mine-banner = List my banners
 
-# master.menu.entrepreneur ##########################################################
+
+master.menu.entrepreneur ####################################
+
 master.menu.entrepreneur = Entrepreneur
+master.menu.entrepreneur.list-mine-application = List my applications
 master.menu.entrepreneur.list-investmentRound = List of investment round
+
+# master.menu.bookkeeper ##########################################################
+
+master.menu.bookkeeper = Book Keeper
+master.menu.bookkeeper.list-mine-investment-round = List my Investment Rounds
+master.menu.bookkeeper.list-not-mine-investment-round = List others Investment Rounds
+
 
 # master.menu.user-account ####################################################
 

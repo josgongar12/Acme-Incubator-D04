@@ -23,6 +23,13 @@ public interface AdministratorChartRepository extends AbstractRepository {
 
 	@Query("select a.indication,count(a) FROM ToolRecord a group by a.indication order by a.indication")
 	Object[] findToolsStatus();
+	
+
+	@Query("select ir.kindRound,count(ir) FROM InvestmentRound ir group by ir.kindRound order by ir.kindRound")
+	Object[] findInvestmentRoundKindRound();
+
+	@Query("select a.statement,count(a) FROM Application a group by a.statement order by a.statement")
+	Object[] findApplicationStatement();
 
 
 }
