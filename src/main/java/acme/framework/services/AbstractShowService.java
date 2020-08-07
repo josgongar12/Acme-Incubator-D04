@@ -14,8 +14,6 @@ package acme.framework.services;
 
 import org.springframework.stereotype.Service;
 
-import acme.entities.applications.Application;
-import acme.entities.investmentRounds.InvestmentRound;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.components.Response;
