@@ -37,4 +37,10 @@ public class Dashboard implements Serializable {
 
 	Double						stddevMoneyActiveOvertures;
 
+	Double						averageInvestmentRoundsPerEntrepreneur;
+
+	Double						averageApplicationsPerEntrepreneur;
+
+	Double						averageApplicationsPerInvestor;
+
 }

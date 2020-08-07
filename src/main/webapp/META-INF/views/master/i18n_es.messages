@@ -136,6 +136,10 @@ master.menu.entrepreneur = Emprendedor
 master.menu.entrepreneur.list-mine-application = Lista aplicaciones
 master.menu.entrepreneur.list-investmentRound = Lista de ronda de inversiones
 
+#master.menu.investor ####################################
+master.menu.investor = Inversor
+master.menu.entrepreneur.application= Lista aplicaciones
+
 # master.menu.bookkeeper ##########################################################
 
 master.menu.bookkeeper = Solicitante

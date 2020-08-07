@@ -88,10 +88,6 @@
 			<acme:menu-suboption code="master.menu.bookkeeper.list-not-mine-investment-round" action="/bookkeeper/investment-round/list-not-mine"/>
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.entrepreneur" access="hasRole('Entrepreneur')">
-			<acme:menu-suboption code="master.menu.entrepreneur.list-mine-application" action="/entrepreneur/application/list-mine"/>
-		</acme:menu-option>
-
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator />
@@ -132,12 +128,8 @@
       		<acme:menu-suboption code="master.menu.administrator.list-banner" action="/administrator/banner/list"/>
 			
       <acme:menu-separator />
-      <acme:menu-suboption code="master.menu.administrator.chart" action="/administrator/chart/show"/>
-      <acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/dashboard/show"/>
-			<acme:menu-suboption code="master.menu.administrator.chart" action="/administrator/chart/show"/>
-      
-
-
+     		<acme:menu-suboption code="master.menu.administrator.chart" action="/administrator/chart/show"/>
+      		<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/dashboard/show"/>
 			<acme:menu-suboption code="master.menu.administrator.shutdown" action="/master/shutdown"/>
 		</acme:menu-option>
 		
@@ -152,7 +144,12 @@
 		
 
 		<acme:menu-option code="master.menu.entrepreneur" access="hasRole('Entrepreneur')">
-			<acme:menu-suboption code="master.menu.entrepreneur.list-investmentRound" action="/entrepreneur/investment-round/list"/>
+			<acme:menu-suboption code="master.menu.entrepreneur.list-mine-application" action="/entrepreneur/application/list-mine"/>
+			<acme:menu-suboption code="master.menu.entrepreneur.list-investmentRound" action="/entrepreneur/investment-round/list_mine"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.investor" access="hasRole('Investor')">
+			<acme:menu-suboption code="master.menu.investor.application" action="/investor/application/list_mine"/>
 		</acme:menu-option>
 
 	</acme:menu-left>

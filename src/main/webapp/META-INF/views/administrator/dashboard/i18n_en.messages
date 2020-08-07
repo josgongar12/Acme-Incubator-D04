@@ -12,4 +12,8 @@ administrator.dashboard.form.label.maxMoneyActiveOvertures = Maximun Money of Ac
 administrator.dashboard.form.label.averageMoneyActiveOvertures = Average Money of Active Overtures:
 administrator.dashboard.form.label.stddevMoneyActiveOvertures = Standard Deviation Money of Active Overtures:
 
+administrator.dashboard.form.label.averageInvestmentRoundsPerEntrepreneur = Average number of Investment Rounds per Entrepreneur:
+administrator.dashboard.form.label.averageApplicationsPerEntrepreneur = Average number of Applications per Entrepreneur:
+administrator.dashboard.form.label.averageApplicationsPerInvestor = Average number of Applications per Investor:
+
 administrator.dashboard.form.button.return = Return
