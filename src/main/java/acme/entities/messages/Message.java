@@ -33,6 +33,7 @@ public class Message extends DomainEntity {
 	private String				title;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	@Past
 	private Date				moment;
 
