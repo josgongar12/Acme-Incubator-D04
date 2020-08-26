@@ -2,7 +2,7 @@ entrepreneur.application.form.label.ticker = Ticker
 entrepreneur.application.form.label.moment = Fecha
 entrepreneur.application.form.label.statement = Estado 
 entrepreneur.application.form.label.moneyOffer = Dinero
-entrepreneur.application.form.label.referenceInvestmentRound = Ticker Ronda Inversion
+entrepreneur.application.form.label.referenceInvestmentRound = Ticker Ronda Inversión
 entrepreneur.application.form.label.InvestmentRoundEntrepreneur = Emprendedor
 
 

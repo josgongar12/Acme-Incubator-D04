@@ -2,11 +2,11 @@ patron.banner.form.label.picture = Imagen
 patron.banner.form.label.slogan = Eslogan
 patron.banner.form.label.url = URL
 patron.banner.form.label.holderName = Patrocinador
-patron.banner.form.label.number = Numero de Tarjeta de Credito
+patron.banner.form.label.number = Número de Tarjeta de Crédito
 patron.banner.form.label.brand = Marca
-patron.banner.form.label.monthExpiration = Mes de Caducidad de Tarjeta de Credito
-patron.banner.form.label.yearExpiration = Año de Caducidad de Tarjeta de Credito
-patron.banner.form.label.cvv = CVV de Tarjeta de Credito
+patron.banner.form.label.monthExpiration = Mes de Caducidad de Tarjeta de Crédito
+patron.banner.form.label.yearExpiration = Año de Caducidad de Tarjeta de Crédito
+patron.banner.form.label.cvv = CVV de Tarjeta de Crédito
 patron.banner.form.label.patron = Cliente
 
 patron.banner.form.button.create = Crear
