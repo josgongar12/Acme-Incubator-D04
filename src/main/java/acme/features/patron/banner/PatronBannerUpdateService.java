@@ -41,7 +41,7 @@ public class PatronBannerUpdateService implements AbstractUpdateService<Patron, 
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		request.unbind(entity, model, "picture", "slogan", "url", "holderName", "number", "brand", "monthExpiration", "yearExpiration", "cvv");
+		request.unbind(entity, model, "picture", "slogan", "url", "holderName", "number", "brand", "monthExpiration", "yearExpiration", "cvv", "patron");
 	}
 
 	@Override

@@ -138,7 +138,7 @@ master.menu.entrepreneur.list-investmentRound = Lista de ronda de inversiones
 
 #master.menu.investor ####################################
 master.menu.investor = Inversor
-master.menu.entrepreneur.application= Lista de aplicaciones
+master.menu.investor.application = Lista de aplicaciones
 
 # master.menu.bookkeeper ##########################################################
 

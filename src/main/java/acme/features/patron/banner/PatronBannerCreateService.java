@@ -9,6 +9,7 @@ import acme.entities.roles.Patron;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractCreateService;
 
 @Service
@@ -32,7 +33,7 @@ public class PatronBannerCreateService implements AbstractCreateService<Patron, 
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-		request.bind(entity, errors);
+		request.bind(entity, errors, "patron");
 	}
 
 	@Override
@@ -46,9 +47,14 @@ public class PatronBannerCreateService implements AbstractCreateService<Patron, 
 
 	@Override
 	public Banner instantiate(final Request<Banner> request) {
-
+		
 		Banner result;
 		result = new Banner();
+		
+		Patron p;
+		p = this.repository.findPatronById(request.getPrincipal().getActiveRoleId());
+		result.setPatron(p);
+		
 		return result;
 	}
 
