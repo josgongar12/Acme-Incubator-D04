@@ -15,6 +15,38 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Table structure for table `accounting_record`
+--
+
+DROP TABLE IF EXISTS `accounting_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `accounting_record` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `body` varchar(255) DEFAULT NULL,
+  `creation_moment` datetime(6) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `bookkeeper_id` int NOT NULL,
+  `investment_round_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK41jm4vk7runvmg5tderffrele` (`bookkeeper_id`),
+  KEY `FKk1pmfnppwk0kav7xloy8u71uq` (`investment_round_id`),
+  CONSTRAINT `FK41jm4vk7runvmg5tderffrele` FOREIGN KEY (`bookkeeper_id`) REFERENCES `bookkeeper` (`id`),
+  CONSTRAINT `FKk1pmfnppwk0kav7xloy8u71uq` FOREIGN KEY (`investment_round_id`) REFERENCES `investment_round` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accounting_record`
+--
+
+LOCK TABLES `accounting_record` WRITE;
+/*!40000 ALTER TABLE `accounting_record` DISABLE KEYS */;
+/*!40000 ALTER TABLE `accounting_record` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `administrator`
@@ -170,6 +202,35 @@ LOCK TABLES `banner` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `book_keeper_request`
+--
+
+DROP TABLE IF EXISTS `book_keeper_request`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `book_keeper_request` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `firm_name` varchar(255) DEFAULT NULL,
+  `responsibility_statement` varchar(3000) DEFAULT NULL,
+  `status` bit(1) DEFAULT NULL,
+  `user_account_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_sljl5qffng42pku9vux2t2fp0` (`user_account_id`),
+  CONSTRAINT `FK5ix9bq8a7nw05wh16k3cua620` FOREIGN KEY (`user_account_id`) REFERENCES `user_account` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_keeper_request`
+--
+
+LOCK TABLES `book_keeper_request` WRITE;
+/*!40000 ALTER TABLE `book_keeper_request` DISABLE KEYS */;
+/*!40000 ALTER TABLE `book_keeper_request` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `bookkeeper`
 --
 
@@ -258,6 +319,39 @@ CREATE TABLE `consumer` (
 LOCK TABLES `consumer` WRITE;
 /*!40000 ALTER TABLE `consumer` DISABLE KEYS */;
 /*!40000 ALTER TABLE `consumer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `credit_card`
+--
+
+DROP TABLE IF EXISTS `credit_card`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `credit_card` (
+  `id` int NOT NULL,
+  `version` int NOT NULL,
+  `brand` varchar(255) DEFAULT NULL,
+  `cvv` varchar(255) DEFAULT NULL,
+  `holder` varchar(255) DEFAULT NULL,
+  `month` int DEFAULT NULL,
+  `number` varchar(255) DEFAULT NULL,
+  `year` int DEFAULT NULL,
+  `patron_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK31e9eqi896koc93q7yjs5yoox` (`patron_id`),
+  CONSTRAINT `FK31e9eqi896koc93q7yjs5yoox` FOREIGN KEY (`patron_id`) REFERENCES `patron` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `credit_card`
+--
+
+LOCK TABLES `credit_card` WRITE;
+/*!40000 ALTER TABLE `credit_card` DISABLE KEYS */;
+INSERT INTO `credit_card` VALUES (159,0,'Brand 1','123','Holder 1',8,'5224746025394443',2028,NULL),(160,0,'Brand 1','345','Holder 2',12,'6432109876543210',2022,NULL);
+/*!40000 ALTER TABLE `credit_card` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -442,39 +536,6 @@ LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
 INSERT INTO `hibernate_sequence` VALUES (6);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `inquire`
---
-
-DROP TABLE IF EXISTS `inquire`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `inquire` (
-  `id` int NOT NULL,
-  `version` int NOT NULL,
-  `creation_date` datetime(6) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `end_date` datetime(6) DEFAULT NULL,
-  `max_money_amount` double DEFAULT NULL,
-  `max_money_currency` varchar(255) DEFAULT NULL,
-  `min_money_amount` double DEFAULT NULL,
-  `min_money_currency` varchar(255) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `inquire`
---
-
-LOCK TABLES `inquire` WRITE;
-/*!40000 ALTER TABLE `inquire` DISABLE KEYS */;
-INSERT INTO `inquire` VALUES (16,0,'2020-07-20 15:00:00.000000','this is the first inquire.','inquire@gmail.com','2020-12-10 16:00:00.000000',100.23,'€',20.23,'€','my first inquire'),(17,0,'2020-06-20 15:00:00.000000','this is the second inquire.','inquire2@gmail.com','2020-12-11 16:00:00.000000',400.23,'€',20.24,'€','my second inquire');
-/*!40000 ALTER TABLE `inquire` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -866,7 +927,7 @@ CREATE TABLE `user_account` (
 
 LOCK TABLES `user_account` WRITE;
 /*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
-INSERT INTO `user_account` VALUES (1,0,_binary '\0','john.doe@acme.com','John','Doe','$2a$05$EBVkCSjAXgQ7qvk2dYl9Q.Pa2h8eR3I8auN4tl6dloK44YvmfHuzu','anonymous'),(3,0,_binary '','administrator@acme.com','Administrator','Acme.com','$2a$05$MxIy.H9Hl2O5CUFPyBReE.XXZQFP43LeiiBMKhCwfpghZfnQXiBTG','administrator');
+INSERT INTO `user_account` VALUES (1,0,_binary '\0','john.doe@acme.com','John','Doe','$2a$05$mL66ym2km6v2MiZLBpHRaeDRqHmkuNnjTSxutrUIXVkalTWYJi9J6','anonymous'),(3,0,_binary '','administrator@acme.com','Administrator','Acme.com','$2a$05$VQMtl7PUW6htl3ovlOJKCeDjJMtdOmwbjX0jTf5Nfze3TMDhBfMSi','administrator');
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -910,38 +971,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
---
--- Table structure for table `accounting_record`
---
-
-DROP TABLE IF EXISTS `accounting_record`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `accounting_record` (
-  `id` int NOT NULL,
-  `version` int NOT NULL,
-  `body` varchar(255) DEFAULT NULL,
-  `creation_moment` datetime(6) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `bookkeeper_id` int NOT NULL,
-  `investment_round_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK41jm4vk7runvmg5tderffrele` (`bookkeeper_id`),
-  KEY `FKk1pmfnppwk0kav7xloy8u71uq` (`investment_round_id`),
-  CONSTRAINT `FK41jm4vk7runvmg5tderffrele` FOREIGN KEY (`bookkeeper_id`) REFERENCES `bookkeeper` (`id`),
-  CONSTRAINT `FKk1pmfnppwk0kav7xloy8u71uq` FOREIGN KEY (`investment_round_id`) REFERENCES `investment_round` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `accounting_record`
---
-
-LOCK TABLES `accounting_record` WRITE;
-/*!40000 ALTER TABLE `accounting_record` DISABLE KEYS */;
-/*!40000 ALTER TABLE `accounting_record` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
--- Dump completed on 2020-08-07 23:12:27
+-- Dump completed on 2020-08-31 19:48:51
